@@ -1,0 +1,39 @@
+def info(a):
+    ls=a.readlines()
+    z=int(input("WANNA CREATE ACCOUNT PRESS 1\nTO SIGN IN PRESS 2\n"))
+    if z==1:
+        name=input("name: ")
+        age=int(input("age: "))
+        salary=int(input("salary: "))
+        cre_num=input("credit card number: ")
+        address=input("address: ")
+        username=input("username: ")
+        password=input("password: ")
+        for i in ls:
+            lo=list(i.split(" "))
+            if lo[0]==username:
+                print("username already taken!! try again")
+                username = input("username: ")
+        w=username+".txt"
+        a.write(username+" "+password+" "+w+" "+"\n")
+        x=open(w,"w")
+        x.write(name+"\n"+str(age)+"\n"+str(salary)+"\n"+cre_num+"\n"+address)
+        print("account created successfully")
+    if z==2:
+        x=input("username: ")
+        y=input("password: ")
+        for i in ls:
+            lo=list(i.split(" "))
+            if x==lo[0]:
+                if y==lo[1]:
+                    w=lo[2]
+                    n=open(w,"r")
+                    print(n.read())
+                else:
+                    print("password not correct")
+
+
+while(1):
+
+    f=open("information.txt","a+")
+    info(f)
